@@ -1,11 +1,17 @@
-import React from "react";
-import Country from "./Country";
+import React from 'react';
+import Country from './Country';
 
-function Countries({ countries }) {
+function Countries({ countries, searchInput }) {
   return (
     <div className="countries">
-      {countries.map((country) => {
-        return <Country countryData={country} />;
+      {countries.map((country, index) => {
+        return (
+          country.name.common
+            .toLowerCase()
+            .includes(searchInput.toLowerCase()) && (
+            <Country countryData={country} key={index} />
+          )
+        );
       })}
     </div>
   );
